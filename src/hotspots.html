@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style_3.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<title>I Want To Experience2</title>
+  </head>
+
+<body>
+    <div class="jumbotron">
+        <div id="logo"><img src="img/iwanttoexperiencelogo-01.svg"></div>
+        <div class="col-md-8 offset-md-2">
+            <h1 class="display-4">Hotspot Creation</h1>
+            <hr class="my-4">
+            <p class="lead">This will allow you to create hotspots on the video you uploaded earlier. To create a hotspot click on any part of the video and give it a name. You will be able to view the coordinates for the hotspots as well. Next, choose the video to link the hotspot to. Continue by saving the hotspot and selecting the next video.</p>
+        </div>
+    </div>      
+    <div class="container">
+        <div class="card">
+            <h2 class="card-title">Add a Hotspot</h2>
+            <div><button class="btn btn-info" onclick="location.href='upload.html';">Upload Videos</button></div>
+            <h5 class="card-subtitle mb-2 text-muted">Click on your image below to add a hotspots.</h5>
+            <form id="form1">
+            <label>Select a video to add a hotspot</label>
+                <div class="form-group video-option">
+                    <select class="form-control" onChange="loadVideo(document.getElementById('videoList').value);" id="videoList">
+                    <option>Select One</option>
+                    </select>
+                </div>
+                <div id="videoArea">
+                </div>
+            </form>
+            <div id="form2">
+                <div class="form-group d-flex flex-column hotspots">
+                    <label>Pitch:</label><input type="text" id="pitch" value="">
+                    <label>Yaw:</label><input type="text" id="yaw" value="">
+                    <label>Path:</label><select id="pathList"></select>
+                    <div class="buttons d-flex flex-row">
+                        <button class="btn btn-primary" onclick="saveHotspot()">Save Hotspot</button>
+                        <button class="btn btn-success" onclick="finished()">Done</button>
+                    </div>    
+                </div>
+            </div>
+            <div class="hotspotlist">
+                <h3>Saved Hotspots:</h3>
+                <p id="hotspotList"></p>
+            </div>
+        </div>
+    </div>
+<script src="script2.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="gr__storage_googleapis_com">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" integrity="sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D" crossorigin="anonymous"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="style.css">
+      <title>I Want To Experience2</title>
+   </head>
+   <body data-gr-c-s-loaded="true">
+      <div class="jumbotron">
+         <div id="logo1"><img src="img/iwanttoexperiencelogo-01.svg"></div>
+         <div class="col-md-8 offset-md-2">
+            <h1 class="display-4">I Want To Experience</h1>
+            <hr class="my-4">
+            <p class="lead">Enjoy the experience of VR videos and create your own hotspots.</p>
+         </div>
+      </div>
+      <div class="container">
+         <div class="card">
+            <h3 class="card-title">Populate Gallery</h3>
+            <h5 class="card-subtitle mb-2 text-muted">Upload one mp4 file at a time</h5>
+            <form action="https://storage.googleapis.com/vrplayer" method="post" enctype="multipart/form-data">
+               <div class="form-group">
+                  <input id="name" type="hidden" name="key" value="${filename}">
+                  <input class="form-control-file" id="myFile" name="file" type="file" accept=".mp4" onchange="getName(this);">
+                  <input class="btn btn-primary" id="upload" type="submit" value="Upload!" onclick="uploadVideo()">
+                  <button class="btn btn-success" onclick="location.href='hotspots.html';" type="button">Submit</button>
+               </div>
+            </form>
+            <div class="videolist">
+               <h4>Video List</h4>
+               <ol></ol>
+            </div>
+         </div>
+      </div>
+      <script>
+         localStorage.clear();
+         var videoName;
+         
+         function getName(myFile){
+         
+           var file = myFile.files[0];  
+           videoName = file.name;
+         
+         }
+         
+         function uploadVideo(){
+         
+           $("ol").append("<li>" + videoName + "</li>");
+         
+           console.log("button clicked");
+         
+           if(typeof(Storage) !== "undefined") {
+         
+             if (localStorage.videoCount) {
+                 localStorage.videoCount = Number(localStorage.videoCount)+1;
+                 
+             } else {
+                 localStorage.videoCount = 1;
+             }
+         
+             var number = localStorage.videoCount;
+             var videoIndex = ("video"+number);
+         
+             localStorage.setItem(videoIndex, videoName);
+           }
+         }
+         
+         function submit(){
+           window.location.href = "https://storage.googleapis.com/vrplayer/hotspots.html";
+         }
+         
+      </script>
+   </body>
+</html>
+COPY TO CLIPBOARD  SELECT ALL
